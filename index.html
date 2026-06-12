@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Plataforma de Juegos</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- MENU PRINCIPAL -->
+  <div id="menuScreen">
+    <h1>Plataforma de Juegos</h1>
+    <div class="menu-buttons">
+      <button id="goTriviaBtn" class="menu-btn">Trivia</button>
+      <button id="goCharadasBtn" class="menu-btn">Charadas</button>
+    </div>
+  </div>
+
+  <!-- TRIVIA HOME -->
+  <div id="triviaHome" class="hidden">
+    <button class="back-btn menu-back" id="triviaBackBtn">&larr; Menú</button>
+    <div class="trivia-home-content">
+      <h1>Trivia</h1>
+      <p class="subtitle">Mundiales y Biblia</p>
+      <div class="home-buttons">
+        <button id="generateBtn">Nueva ronda</button>
+        <button id="viewAllBtn" class="secondary-btn">Ver todas las preguntas</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- GAME SCREEN -->
+  <div id="gameScreen" class="hidden">
+    <div class="top-bar">
+      <button id="backBtn" class="back-btn">&larr; Volver</button>
+      <button id="fullscreenBtn" class="fullscreen-btn" title="Pantalla completa">&#10529;</button>
+    </div>
+    <div id="cardContainer"></div>
+    <div class="nav">
+      <button id="prevBtn" class="nav-btn">&lsaquo;</button>
+      <span id="counter"></span>
+      <button id="nextBtn" class="nav-btn">&rsaquo;</button>
+    </div>
+  </div>
+
+  <!-- ALL CARDS SCREEN -->
+  <div id="allCardsScreen" class="hidden">
+    <div class="top-bar">
+      <button id="allBackBtn" class="back-btn">&larr; Volver</button>
+    </div>
+    <h2 class="all-title">Todas las preguntas</h2>
+    <div class="tabs">
+      <button class="tab-btn active" data-filter="todas">Todas</button>
+      <button class="tab-btn" data-filter="Mundial">Mundial</button>
+      <button class="tab-btn" data-filter="Biblia">Biblia</button>
+    </div>
+    <div id="allCardsGrid"></div>
+  </div>
+
+  <!-- CHARADAS SCREEN -->
+  <div id="charadasScreen" class="hidden">
+    <div class="top-bar">
+      <button id="charadasBackBtn" class="back-btn">&larr; Menú</button>
+    </div>
+    <h2 class="charadas-title">Charadas</h2>
+    <div class="roulette-container">
+      <div class="roulette-pointer">&#9660;</div>
+      <canvas id="rouletteCanvas" width="400" height="400"></canvas>
+    </div>
+    <div id="rouletteResult" class="roulette-result hidden"></div>
+    <button id="spinBtn" class="spin-btn">Girar</button>
+  </div>
+
+  <script src="index.js"></script>
+</body>
+</html>

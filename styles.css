@@ -1,0 +1,587 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #1a1a2e;
+  color: #eee;
+  display: flex;
+  justify-content: center;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* ===== MENU SCREEN ===== */
+#menuScreen {
+  text-align: center;
+  margin-top: 20vh;
+}
+
+#menuScreen h1 {
+  font-size: 2.5rem;
+  color: #e94560;
+  margin-bottom: 40px;
+}
+
+.menu-buttons {
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.menu-btn {
+  background: #e94560;
+  color: #fff;
+  border: none;
+  padding: 20px 50px;
+  font-size: 1.5rem;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+  font-weight: 700;
+  min-width: 200px;
+}
+
+.menu-btn:hover {
+  background: #c73652;
+  transform: scale(1.08);
+}
+
+/* ===== TRIVIA HOME ===== */
+#triviaHome {
+  text-align: center;
+  width: 100%;
+  height: 100vh;
+  position: relative;
+}
+
+.menu-back {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+
+.trivia-home-content {
+  margin-top: 18vh;
+}
+
+#triviaHome h1 {
+  font-size: 4rem;
+  color: #e94560;
+  margin-bottom: 5px;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  color: #aaa;
+  margin-bottom: 30px;
+}
+
+.home-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+#generateBtn {
+  background: #e94560;
+  color: #fff;
+  border: none;
+  padding: 16px 50px;
+  font-size: 1.3rem;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+  font-weight: 600;
+}
+
+#generateBtn:hover {
+  background: #c73652;
+  transform: scale(1.05);
+}
+
+.secondary-btn {
+  background: none;
+  border: 2px solid #e94560;
+  color: #e94560;
+  padding: 12px 36px;
+  font-size: 1rem;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s, transform 0.2s;
+  font-weight: 600;
+}
+
+.secondary-btn:hover {
+  background: #e94560;
+  color: #fff;
+  transform: scale(1.05);
+}
+
+/* ===== GAME SCREEN ===== */
+#gameScreen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  width: 100%;
+  max-width: 1000px;
+  height: 100vh;
+  padding: 16px 20px;
+}
+
+#gameScreen .top-bar {
+  flex-shrink: 0;
+  padding-bottom: 10px;
+}
+
+#gameScreen #cardContainer {
+  flex: 1;
+  min-height: 0;
+}
+
+#gameScreen .nav {
+  flex-shrink: 0;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.back-btn {
+  background: none;
+  border: 1px solid #555;
+  color: #ccc;
+  padding: 8px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: border-color 0.3s, color 0.3s;
+}
+
+.back-btn:hover {
+  border-color: #e94560;
+  color: #e94560;
+}
+
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 850px;
+}
+
+.fullscreen-btn {
+  background: none;
+  border: 1px solid #555;
+  color: #ccc;
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.3s, color 0.3s;
+}
+
+.fullscreen-btn:hover {
+  border-color: #e94560;
+  color: #e94560;
+}
+
+/* ===== CARD ===== */
+#cardContainer {
+  perspective: 1000px;
+  width: 100%;
+  max-width: 850px;
+  cursor: pointer;
+}
+
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+#cardContainer.flipped .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 24px;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.card-front {
+  background: #16213e;
+  border: 2px solid #0f3460;
+  box-shadow: 0 6px 30px rgba(0, 0, 0, 0.4);
+}
+
+.card-back {
+  background: #0f3460;
+  border: 2px solid #e94560;
+  transform: rotateY(180deg);
+  box-shadow: 0 6px 30px rgba(233, 69, 96, 0.3);
+}
+
+.card-category {
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  color: #e94560;
+  margin-bottom: 24px;
+  font-weight: 600;
+}
+
+.card-front .card-text {
+  font-size: 2rem;
+  line-height: 1.6;
+  color: #ddd;
+}
+
+.card-back .card-label {
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  color: #e94560;
+  margin-bottom: 20px;
+}
+
+.card-back .card-text {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.tap-hint {
+  position: absolute;
+  bottom: 20px;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+/* ===== NAVIGATION ===== */
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.nav-btn {
+  background: none;
+  border: 2px solid #555;
+  color: #ccc;
+  font-size: 2.5rem;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.3s, color 0.3s;
+  line-height: 1;
+}
+
+.nav-btn:hover {
+  border-color: #e94560;
+  color: #e94560;
+}
+
+#counter {
+  font-size: 1.2rem;
+  color: #aaa;
+  min-width: 60px;
+  text-align: center;
+}
+
+/* ===== ALL CARDS SCREEN ===== */
+#allCardsScreen {
+  width: 100%;
+  max-width: 1200px;
+  padding: 20px 30px;
+  align-self: flex-start;
+}
+
+.all-title {
+  text-align: center;
+  font-size: 1.8rem;
+  color: #e94560;
+  margin: 20px 0 10px;
+}
+
+/* ===== TABS ===== */
+.tabs {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.tab-btn {
+  background: none;
+  border: 2px solid #555;
+  color: #aaa;
+  padding: 8px 24px;
+  font-size: 0.95rem;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-weight: 600;
+}
+
+.tab-btn:hover {
+  border-color: #e94560;
+  color: #e94560;
+}
+
+.tab-btn.active {
+  background: #e94560;
+  border-color: #e94560;
+  color: #fff;
+}
+
+#allCardsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+  padding-bottom: 40px;
+}
+
+.grid-card {
+  perspective: 1000px;
+  height: 200px;
+  cursor: pointer;
+}
+
+.grid-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+.grid-card.flipped .grid-card-inner {
+  transform: rotateY(180deg);
+}
+
+.grid-card-front,
+.grid-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 14px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.grid-card-front {
+  background: #16213e;
+  border: 2px solid #0f3460;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.grid-card-back {
+  background: #0f3460;
+  border: 2px solid #e94560;
+  transform: rotateY(180deg);
+  box-shadow: 0 4px 15px rgba(233, 69, 96, 0.3);
+}
+
+.grid-card-category {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #e94560;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.grid-card-front .grid-card-text {
+  font-size: 0.9rem;
+  line-height: 1.4;
+  color: #ddd;
+}
+
+.grid-card-back .grid-card-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #e94560;
+  margin-bottom: 8px;
+}
+
+.grid-card-back .grid-card-text {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.grid-tap-hint {
+  position: absolute;
+  bottom: 10px;
+  font-size: 0.65rem;
+  color: #555;
+}
+
+/* ===== CHARADAS SCREEN ===== */
+#charadasScreen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 600px;
+  height: 100vh;
+  padding: 16px 20px;
+}
+
+#charadasScreen .top-bar {
+  flex-shrink: 0;
+}
+
+.charadas-title {
+  font-size: 1.6rem;
+  color: #e94560;
+  margin: 6px 0;
+  flex-shrink: 0;
+}
+
+.roulette-container {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.roulette-pointer {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.8rem;
+  color: #e94560;
+  z-index: 10;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
+}
+
+#rouletteCanvas {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.roulette-result {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #fff;
+  background: #e94560;
+  padding: 12px 36px;
+  border-radius: 12px;
+  text-align: center;
+  flex-shrink: 0;
+  margin-top: 10px;
+  animation: popIn 0.4s ease;
+}
+
+@keyframes popIn {
+  0% { transform: scale(0); opacity: 0; }
+  60% { transform: scale(1.15); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.spin-btn {
+  background: #e94560;
+  color: #fff;
+  border: none;
+  padding: 14px 60px;
+  font-size: 1.3rem;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 12px;
+  margin-bottom: 10px;
+}
+
+.spin-btn:hover:not(:disabled) {
+  background: #c73652;
+  transform: scale(1.05);
+}
+
+.spin-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 500px) {
+  .card-front .card-text {
+    font-size: 1.4rem;
+  }
+
+  .card-back .card-text {
+    font-size: 2rem;
+  }
+
+  #menuScreen h1 {
+    font-size: 1.8rem;
+  }
+
+  #triviaHome h1 {
+    font-size: 3rem;
+  }
+
+  .menu-btn {
+    padding: 16px 36px;
+    font-size: 1.2rem;
+    min-width: 150px;
+  }
+
+  #charadasScreen {
+    padding: 10px;
+  }
+
+  .charadas-title {
+    font-size: 1.5rem;
+  }
+
+  .roulette-result {
+    font-size: 1.4rem;
+    padding: 10px 30px;
+  }
+}
+
+@media (max-width: 600px) {
+  #allCardsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  #allCardsScreen {
+    padding: 10px 15px;
+  }
+}
