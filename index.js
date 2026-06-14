@@ -230,6 +230,7 @@ const prevBtn = document.getElementById('prevBtn');
 const nextBtn = document.getElementById('nextBtn');
 const counter = document.getElementById('counter');
 const cardContainer = document.getElementById('cardContainer');
+const cardArea = cardContainer.querySelector('.card-area');
 const goTriviaBtn = document.getElementById('goTriviaBtn');
 const goCharadasBtn = document.getElementById('goCharadasBtn');
 const triviaBackBtn = document.getElementById('triviaBackBtn');
@@ -280,12 +281,11 @@ function showScreen(screen) {
 
 function renderCard(item) {
   cardContainer.classList.remove('flipped');
-  cardContainer.innerHTML = `
+  cardArea.innerHTML = `
     <div class="card-inner">
       <div class="card-front">
         <span class="card-category">${item.category}</span>
         <p class="card-text">${item.question}</p>
-        <span class="tap-hint">Toca para ver respuesta</span>
       </div>
       <div class="card-back">
         <span class="card-label">Respuesta</span>
@@ -341,7 +341,6 @@ function showAllCards(filter = 'todas') {
         <div class="grid-card-front">
           <span class="grid-card-category">${item.category}</span>
           <p class="grid-card-text">${item.question}</p>
-          <span class="grid-tap-hint">Toca para ver respuesta</span>
         </div>
         <div class="grid-card-back">
           <span class="grid-card-label">Respuesta</span>
@@ -498,7 +497,7 @@ document.addEventListener('fullscreenchange', () => {
 });
 
 // Card flip
-cardContainer.addEventListener('click', () => cardContainer.classList.toggle('flipped'));
+cardArea.addEventListener('click', () => cardContainer.classList.toggle('flipped'));
 
 // Roulette spin
 spinBtn.addEventListener('click', spinRoulette);

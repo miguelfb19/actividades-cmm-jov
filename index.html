@@ -45,15 +45,13 @@
 
   <!-- GAME SCREEN -->
   <div id="gameScreen" class="hidden">
-    <div class="top-bar">
-      <button id="backBtn" class="back-btn">&larr; Volver</button>
-      <button id="fullscreenBtn" class="fullscreen-btn" title="Pantalla completa">&#10529;</button>
-    </div>
-    <div id="cardContainer"></div>
-    <div class="nav">
-      <button id="prevBtn" class="nav-btn">&lsaquo;</button>
+    <button id="backBtn" class="back-btn corner-btn">&larr; Volver</button>
+    <button id="fullscreenBtn" class="fullscreen-btn corner-btn" title="Pantalla completa">&#10529;</button>
+    <div id="cardContainer">
+      <button id="prevBtn" class="nav-btn nav-left">&lsaquo;</button>
+      <div class="card-area"></div>
+      <button id="nextBtn" class="nav-btn nav-right">&rsaquo;</button>
       <span id="counter"></span>
-      <button id="nextBtn" class="nav-btn">&rsaquo;</button>
     </div>
   </div>
 

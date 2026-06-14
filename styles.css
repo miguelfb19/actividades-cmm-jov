@@ -127,30 +127,62 @@ body {
 
 /* ===== GAME SCREEN ===== */
 #gameScreen {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0;
+  position: relative;
   width: 100%;
-  max-width: 1100px;
   height: 100vh;
-  padding: 16px 20px;
 }
 
-#gameScreen .top-bar {
-  flex-shrink: 0;
-  padding-bottom: 10px;
+#gameScreen .back-btn {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 20;
+}
+
+#gameScreen .fullscreen-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 20;
 }
 
 #gameScreen #cardContainer {
-  flex: 1;
-  min-height: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  max-width: 100%;
+  padding: 0;
 }
 
-#gameScreen .nav {
+.card-area {
+  flex: 1;
+  height: 100%;
+  position: relative;
+  perspective: 1000px;
+  cursor: pointer;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.nav-left,
+.nav-right {
   flex-shrink: 0;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  z-index: 10;
+}
+
+#gameScreen #counter {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  font-size: 2.5rem;
+  color: #aaa;
+  text-align: center;
 }
 
 .back-btn {
@@ -198,10 +230,7 @@ body {
 
 /* ===== CARD ===== */
 #cardContainer {
-  perspective: 1000px;
   width: 100%;
-  max-width: 1000px;
-  cursor: pointer;
 }
 
 .card-inner {
@@ -273,20 +302,7 @@ body {
   color: #fff;
 }
 
-.tap-hint {
-  position: absolute;
-  bottom: 16px;
-  font-size: 1.5rem;
-  color: #555;
-}
-
 /* ===== NAVIGATION ===== */
-.nav {
-  display: flex;
-  align-items: center;
-  gap: 24px;
-}
-
 .nav-btn {
   background: none;
   border: 2px solid #555;
@@ -306,13 +322,6 @@ body {
 .nav-btn:hover {
   border-color: #e94560;
   color: #e94560;
-}
-
-#counter {
-  font-size: 2.5rem;
-  color: #aaa;
-  min-width: 70px;
-  text-align: center;
 }
 
 /* ===== ALL CARDS SCREEN ===== */
@@ -443,13 +452,6 @@ body {
   color: #fff;
 }
 
-.grid-tap-hint {
-  position: absolute;
-  bottom: 10px;
-  font-size: 1rem;
-  color: #555;
-}
-
 /* ===== CHARADAS SCREEN ===== */
 #charadasScreen {
   display: flex;
@@ -556,13 +558,8 @@ body {
     font-size: 1.3rem;
   }
 
-  .tap-hint {
-    font-size: 0.9rem;
-  }
-
-  #counter {
+  #gameScreen #counter {
     font-size: 1.3rem;
-    min-width: 60px;
   }
 
   .nav-btn {
@@ -627,10 +624,6 @@ body {
 
   .grid-card-back .grid-card-label {
     font-size: 0.9rem;
-  }
-
-  .grid-tap-hint {
-    font-size: 0.7rem;
   }
 
   .all-title {
